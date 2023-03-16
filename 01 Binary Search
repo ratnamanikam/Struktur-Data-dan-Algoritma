@@ -1,32 +1,35 @@
-#include<iostream>
-using namespace std;
-
-int main(){
-	int halaman[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-	int length = sizeof(halaman)/sizeof(*halaman);
-	int nohal, hasil;
-	cout<<"Kira-kira nomor halaman dari 1-10 berada di indeks mana saja ya?"<<endl;
-	cout<<"================================================================ "<<endl;
-	cout<<"Masukkan nomor halaman: ";
-	cin>>nohal;
-	cout<<".\n.\n "<<endl;
-	for(int a = 0; a < length; a++){
-		if(nohal == halaman[a]){
-			hasil++;
-		}
-	}
-	if (hasil == 0){
-		cout<<"Halaman yang anda masukkan tidak tersedia"<<endl;
-		cout<<"*nice try, try again"<<endl;
-	}
-	else{
-		for(int b = 0; b< length; b++){
-			if(nohal == halaman[b]){
-			cout<<"Halaman "<<nohal<<" berada di indeks ke- "<<b<<endl;
-			cout<<"================================ "<<endl;
-			}
-		}
-		cout<<"Sekian, dari Ratna";
-	}
-	
+#include <iostream> 
+using namespace std; 
+ 
+int binarysearch(int arr[], int l, 
+    int r, int x) 
+{ 
+ if (r >= l) 
+ { 
+  int mid = (l + r) / 2; 
+ 
+  if (arr[mid] == x) 
+   return mid; 
+ 
+  if (arr[mid] > x) 
+   return binarysearch(arr, l, 
+        mid - 1, x); 
+ 
+  return binarysearch(arr, mid + 1, r, x); 
+ } 
+ return -1; 
+} 
+ 
+int main() 
+{ 
+ int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; 
+ int x = 10; 
+ int n = sizeof(arr) / sizeof(arr[0]); 
+ int hasil = binarysearch(arr, 0, n - 1, x); 
+ (hasil == -1) ? 
+ cout << 
+ "Angka tidak tersedia" : 
+ cout << "Angka tersedia dalam indeks " << hasil; 
+   
+ return 0; 
 }
